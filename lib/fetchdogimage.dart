@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-@riverpod
 Future<String> fetchDogImage() async {
-  final respons =
+  final response =
       await http.get(Uri.parse('https://dog.ceo/api/breeds/image/random'));
-  return jsonDecode(respons.body)['message'];
+  return jsonDecode(response.body)['message'] as String;
 }
 
 //プロバイダ
